@@ -20,7 +20,7 @@
 
 - name: docker-engine started and enabled
   service:
-    name: docker-engine
+    name: docker
     state: started
     enabled: yes
 
