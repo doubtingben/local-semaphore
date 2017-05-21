@@ -8,6 +8,7 @@
   - "{{ local_semaphore_root_path }}"
   - "{{ local_semaphore.playbook_path }}"
   - "{{ local_semaphore.data_path }}"
+  - "{{ local_semaphore.certs_path }}"
 
 - name: template config files
   template:
@@ -39,7 +40,7 @@
     name: semaphore-nginx
     image: nginx:1
     volumes:
-    - "{{ local_semaphore.certs }}:/etc/nginx/ssl"
+    - "{{ local_semaphore.certs_path }}:/etc/nginx/ssl"
     exposed_ports:
     - 80
     - 443
