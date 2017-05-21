@@ -12,8 +12,11 @@
     setup:
 
   tasks:
-
-  - name: Hostname
-    command: hostname
+  - name: Install packages
+    package:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - docker
 
 ...
