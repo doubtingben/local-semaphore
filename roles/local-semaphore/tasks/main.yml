@@ -34,4 +34,14 @@
     - semaphore-mysql:semaphore-mysql
     env_file: "{{ local_semaphore_root_path }}/env"
 
+- name: start nginx container
+  docker_container:
+    name: semaphore-nginx
+    image: nginx:1
+    volumes:
+    - "{{ local_semaphore.certs }}:/etc/nginx/ssl"
+    exposed_ports:
+    - 80
+    - 443
+
 ...
