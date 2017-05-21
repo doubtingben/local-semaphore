@@ -40,6 +40,8 @@
   docker_container:
     name: semaphore-nginx
     image: nginx:1
+    links:
+    - semaphore:semaphore
     volumes:
     - "{{ local_semaphore.certs_path }}:/etc/nginx/ssl"
     - "{{ local_semaphore_root_path }}/nginx.conf:/etc/nginx/nginx.conf:ro"
