@@ -24,6 +24,11 @@
     state: started
     enabled: yes
 
+- name: install pip :(
+  apt:
+    name: python-pip
+    state: latest
+
 - name: install docker-py for ansible
   pip:
     name: docker-py
