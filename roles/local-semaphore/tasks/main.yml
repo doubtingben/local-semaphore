@@ -5,6 +5,7 @@
     path: "{{ item }}"
     state: directory
   with_items:
+  - "{{ local_semaphore.root_path }}"
   - "{{ local_semaphore.playbook_path }}"
   - "{{ local_semaphore.data_path }}"
 
@@ -13,7 +14,7 @@
     src: "{{ item.src }}.j2"
     dest: "{{ item.dest }}/{{ item.src }}"
   with_items:
-    - { src: 'env', dest: "{{ local_semaphore.playbook_path }}" }
+    - { src: 'env', dest: "{{ local_semaphore.root_path }}" }
 
 - name: start mysql containers
   docker_container:
@@ -33,6 +34,6 @@
     - "{{ local_semaphore.playbook_path }}:/semaphore"
     links:
     - semaphore-mysql:semaphore-mysql
-    env_file: "{{ local_semaphore.playbook_path }}/env"
+    env_file: "{{ local_semaphore.root_path }}/env"
 
 ...
