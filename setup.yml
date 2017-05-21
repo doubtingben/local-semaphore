@@ -18,8 +18,10 @@
       state: present
     with_items:
       - vim
+      - git
 
   roles:
   - docker
+  - local-semaphore
 
 ...
