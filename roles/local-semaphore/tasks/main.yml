@@ -12,6 +12,6 @@
     src: "{{ item.src }}.j2"
     dest: "{{ item.dest }}/{{ item.src }}"
   with_items:
-    - "{ src: 'env', dest: {{ local_semaphore.playbook_path }}"
+    - { src: 'env', dest: "{{ local_semaphore.playbook_path }}" }
 
 
