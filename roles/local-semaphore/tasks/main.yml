@@ -6,6 +6,7 @@
     state: directory
   with_items:
   - "{{ local_semaphore.playbook_path }}"
+  - "{{ local_semaphore.data_path }}"
 
 - name: template config files
   template:
@@ -14,4 +15,22 @@
   with_items:
     - { src: 'env', dest: "{{ local_semaphore.playbook_path }}" }
 
+- name: start mysql containers
+  docker_container:
+    name: semaphore-mysql
+    image: mysql:5
+    volumes:
+    - "{{ local_semaphore.data_path }}":/var/lib/mysql
+    env:
+      MYSQL_DATABASE: semaphore
+      MYSQL_RANDOM_ROOT_PASSWORD: yes
 
+- name: start semaphore container
+  docker_container:
+    name: semaphore
+    image: doubtingben/local-semaphore
+    volumes:
+    - "{{ local_semaphore.playbook_path }}":/semaphore
+    env_file: "{{ local_semaphore.playbook_path }}/env"
+
+...
