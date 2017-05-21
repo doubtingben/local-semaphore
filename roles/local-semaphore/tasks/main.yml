@@ -22,7 +22,7 @@
     image: mysql:5
     volumes:
     - "{{ local_semaphore.data_path }}:/var/lib/mysql"
-    env_file: "{{ local_semaphore_root_path }}/env:ro"
+    env_file: "{{ local_semaphore_root_path }}/env"
 
 - name: start semaphore container
   docker_container:
@@ -32,6 +32,6 @@
     - "{{ local_semaphore.playbook_path }}:/semaphore"
     links:
     - semaphore-mysql:semaphore-mysql
-    env_file: "{{ local_semaphore_root_path }}/env:ro"
+    env_file: "{{ local_semaphore_root_path }}/env"
 
 ...
