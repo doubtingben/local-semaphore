@@ -18,10 +18,10 @@
     cache_valid_time: 3600
     state: latest
 
-#- name: docker-engine started and enabled
-#  systemd:
-#    name: docker-engine
-#    state: started
-#    enabled: yes
+- name: docker-engine started and enabled
+  systemd:
+    name: docker-engine
+    state: started
+    enabled: yes
 
 ...
