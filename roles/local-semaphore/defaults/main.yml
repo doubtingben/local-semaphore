@@ -1,8 +1,8 @@
 ---
 
+local_semaphore_root_path: /srv/semaphore
 local_semaphore:
-  root_path: /srv/semaphore
-  playbook_path: "{{ local_semaphore.root_path }}/playbooks"
-  data_path: "{{ local_semaphore.root_path }}data"
+  playbook_path: "{{ local_semaphore_root_path: }}/playbooks"
+  data_path: "{{ local_semaphore_root_path }}data"
 
 ...  
