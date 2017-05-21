@@ -19,7 +19,7 @@
     state: latest
 
 - name: docker-engine started and enabled
-  systemd:
+  service:
     name: docker-engine
     state: started
     enabled: yes
