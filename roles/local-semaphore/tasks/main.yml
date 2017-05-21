@@ -16,6 +16,7 @@
     dest: "{{ item.dest }}/{{ item.src }}"
   with_items:
     - { src: 'env', dest: "{{ local_semaphore_root_path }}" }
+    - { src: 'nginx.conf', dest: "{{ local_semaphore_root_path }}" }
 
 - name: start mysql containers
   docker_container:
@@ -41,8 +42,9 @@
     image: nginx:1
     volumes:
     - "{{ local_semaphore.certs_path }}:/etc/nginx/ssl"
-    exposed_ports:
-    - 80
-    - 443
+    - "{{ local_semaphore.root_path }}/nginx.conf:/etc/nginx/nginx.conf:ro"
+    ports:
+    - "80:80"
+    - "443:443"
 
 ...
