@@ -20,7 +20,7 @@
     name: semaphore-mysql
     image: mysql:5
     volumes:
-    - "{{ local_semaphore.data_path }}":/var/lib/mysql
+    - "{{ local_semaphore.data_path }}:/var/lib/mysql"
     env:
       MYSQL_DATABASE: semaphore
       MYSQL_RANDOM_ROOT_PASSWORD: yes
@@ -30,7 +30,7 @@
     name: semaphore
     image: doubtingben/local-semaphore
     volumes:
-    - "{{ local_semaphore.playbook_path }}":/semaphore
+    - "{{ local_semaphore.playbook_path }}:/semaphore"
     env_file: "{{ local_semaphore.playbook_path }}/env"
 
 ...
