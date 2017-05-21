@@ -1,0 +1,6 @@
+---
+
+local_semaphore:
+  playbook_path: /semaphore
+
+...  
