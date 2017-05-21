@@ -1,0 +1,27 @@
+---
+
+- name: install docker gpg key
+  apt_key:
+    keyserver: hkp://p80.pool.sks-keyservers.net:80
+    id: 58118E89F3A912897C070ADBF76221572C52609D
+    state: present
+
+- name: install docker repository
+  apt_repository:
+    repo: deb https://apt.dockerproject.org/repo ubuntu-xenial main
+    state: present
+
+- name: install docker-engine
+  apt:
+    name: docker-engine
+    update_cache: yes
+    cache_valid_time: 3600
+    state: latest
+
+- name: docker-engine started and enabled
+  systemd:
+    name: docker-engine
+    state: started
+    enabled: yes
+
+...
