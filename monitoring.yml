@@ -5,7 +5,7 @@
   gather_facts: false
   pre_tasks:
   - name: create .ssh folder
-    local_action: shell [[ ! -d ~/.ssh ]] && mkdir -p ~/.ssh
+    local_action: shell test ! -d ~/.ssh && mkdir -p ~/.ssh
   - name: run ssh-keyscan to add keys to known_hosts
     local_action: shell ssh-keyscan {{ ansible_ssh_host }} >> ~/.ssh/known_hosts
   - name: Install python2 for Ansible
